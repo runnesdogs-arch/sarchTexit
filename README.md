@@ -10,6 +10,7 @@ st.set_page_config(
 )
 
 # --- 2. アクセス制御（簡易パスワード機能） ---
+# StreamlitのSecretsまたは環境変数からパスワードを取得（未設定時はデフォルト値）
 PASSWORD = st.secrets.get("APP_PASSWORD", "ot_pass_2026")
 
 st.sidebar.title("🔒 アクセス制御")
@@ -27,8 +28,8 @@ if not api_key:
     st.stop()
 
 genai.configure(api_key=api_key)
-# 最新の gemini-3.6-flash に設定
-model = genai.GenerativeModel("gemini-3.6-flash")
+# モデルを gemini-3.5-flash に設定
+model = genai.GenerativeModel("gemini-3.5-flash")
 
 # --- 4. メイン画面ヘッダー ---
 st.title("多職種視点型・文献＆症例事例検索システム")
